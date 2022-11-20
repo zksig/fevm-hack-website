@@ -6,6 +6,8 @@ import {
   deployProviderNFTDealClient,
 } from "../../services/filecoin";
 
+type ContractType = "Provider" | "Client" | "Common" | "Agreement";
+
 const fnByContractType = {
   Provider: deployProviderNFTDealClient,
   Client: deployClientNFTDealClient,
@@ -15,9 +17,7 @@ const fnByContractType = {
 
 export default function ProviderClient() {
   const [nftAddress, setNftAddress] = useState("");
-  const [contractType, setContractType] = useState<
-    "Provider" | "Client" | "Common" | "Agreement"
-  >("Provider");
+  const [contractType, setContractType] = useState<ContractType>("Provider");
   const [contractAddress, setContractAddress] = useState("");
 
   const handleCreate = async (e: FormEvent) => {
@@ -66,7 +66,9 @@ export default function ProviderClient() {
                       id="contract-type"
                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                       value={contractType}
-                      onChange={({ target }) => setContractType(target.value)}
+                      onChange={({ target }) =>
+                        setContractType(target.value as ContractType)
+                      }
                     >
                       <option value="Provider">Provider NFT</option>
                       <option value="Client">Client NFT</option>
