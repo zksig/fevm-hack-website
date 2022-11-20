@@ -1,4 +1,5 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 import Features from "../components/Features";
 import { useFilecoin } from "../components/providers/FilecoinProvider";
 
@@ -90,7 +91,7 @@ export default function Home() {
                 </p>
                 <div className="mt-8 flex gap-x-4 sm:justify-center">
                   {isConnected ? (
-                    <a
+                    <Link
                       href="/create"
                       className="inline-block rounded-lg bg-indigo-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-indigo-600 hover:bg-indigo-700 hover:ring-indigo-700"
                     >
@@ -98,7 +99,7 @@ export default function Home() {
                       <span className="text-indigo-200" aria-hidden="true">
                         &rarr;
                       </span>
-                    </a>
+                    </Link>
                   ) : (
                     <button
                       className="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm ring-1 ring-gray-900/10 hover:ring-gray-900/20"
